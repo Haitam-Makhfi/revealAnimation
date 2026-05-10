@@ -1,0 +1,27 @@
+@import "tailwindcss";
+body {
+  font-family: var(--font-montreal-medium);
+  background-color: var(--color-olive-200);
+}
+@font-face {
+  font-family: "PP Neue Montreal Medium";
+  font-style: normal;
+  font-weight: normal;
+  src:
+    local("PP Neue Montreal Medium"),
+    url("./assets/fonts/pp-neue-montreal-cufonfonts-webfont/ppneuemontreal-medium.woff")
+      format("woff");
+}
+@font-face {
+  font-family: "PP Neue Montreal Bold";
+  font-style: normal;
+  font-weight: normal;
+  src:
+    local("PP Neue Montreal Bold"),
+    url("./assets/fonts/pp-neue-montreal-cufonfonts-webfont/ppneuemontreal-bold.woff")
+      format("woff");
+}
+@theme {
+  --font-montreal-medium: "PP Neue Montreal Medium", sans-serif;
+  --font-montreal-bold: "PP Neue Montreal Bold", sans-serif;
+}
