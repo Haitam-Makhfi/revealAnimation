@@ -1,12 +1,13 @@
 import { useGSAP } from "@gsap/react";
 // import { gsap } from "gsap";
 interface RevealerProps {
-  mainTl: React.RefObject<gsap.core.Timeline | null>;
+  sequenceAnimation: gsap.core.Timeline | null;
 }
-export default function Revealer({ mainTl }: RevealerProps) {
+export default function Revealer({ sequenceAnimation }: RevealerProps) {
   useGSAP(() => {
-    if (!mainTl.current) return;
-    mainTl.current
+    console.log("revealer running, timeline exists?", !!sequenceAnimation);
+    if (!sequenceAnimation) return;
+    sequenceAnimation
       .to("#revealerOne", {
         yPercent: -100,
         duration: 1.5,
@@ -22,7 +23,7 @@ export default function Revealer({ mainTl }: RevealerProps) {
         "<",
       )
       .addLabel("revealDone");
-  });
+  }, [sequenceAnimation]);
 
   return (
     <div id="revealers" className="fixed w-screen h-screen inset-0 z-3">

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useState } from "react";
 import Revealer from "./components/Revealer";
 import Imgs from "./components/Imgs.tsx";
 import Nav from "./components/Nav";
@@ -8,15 +8,22 @@ import { gsap } from "gsap";
 // import cover2 from "./assets/imgs/coverImg2.jpg";
 
 function App() {
-  const mainTlRef = useRef<gsap.core.Timeline | null>(null);
+  const [sequenceAnimation, setSequenceAnimation] =
+    useState<gsap.core.Timeline | null>(null);
   useGSAP(() => {
-    mainTlRef.current = gsap.timeline({ force3D: true });
+    console.log("Parent creating timeline");
+    setSequenceAnimation(gsap.timeline({ force3D: true }));
+    // setSequenceAnimation(true);
+    return () => {
+      console.log("Parent killing timeline", !!sequenceAnimation);
+      sequenceAnimation?.kill();
+    };
   }, []);
   return (
     <>
-      <Revealer mainTl={mainTlRef} />
+      <Revealer sequenceAnimation={sequenceAnimation} />
       <Nav />
-      <Imgs mainTl={mainTlRef} />
+      <Imgs sequenceAnimation={sequenceAnimation} />
     </>
   );
 }

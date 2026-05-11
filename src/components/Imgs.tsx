@@ -7,13 +7,14 @@ import img6 from "../assets/imgs/img6.jpg";
 import { useGSAP } from "@gsap/react";
 // import { gsap } from "gsap";
 interface imgsProps {
-  mainTl: React.RefObject<gsap.core.Timeline | null>;
+  sequenceAnimation: gsap.core.Timeline | null;
 }
-export default function Imgs({ mainTl }: imgsProps) {
+export default function Imgs({ sequenceAnimation }: imgsProps) {
   useGSAP(() => {
-    if (!mainTl.current) return;
+    console.log("imgs running, timeline exists?", !!sequenceAnimation);
+    if (!sequenceAnimation) return;
     const imgs = document.querySelectorAll("#imgs img");
-    mainTl.current
+    sequenceAnimation
       .set(
         imgs,
         {
@@ -48,7 +49,7 @@ export default function Imgs({ mainTl }: imgsProps) {
         },
         "<=+0.8",
       );
-  });
+  }, [sequenceAnimation]);
   return (
     <div
       id="imgs"
@@ -57,32 +58,32 @@ export default function Imgs({ mainTl }: imgsProps) {
       <img
         src={img1}
         alt=""
-        className="absolute inset-0 object-cover object-bottom"
+        className="absolute w-full h-full inset-0 object-cover object-bottom "
       />
       <img
         src={img2}
         alt=""
-        className="absolute inset-0 object-cover object-bottom"
+        className="absolute w-full h-full inset-0 object-cover object-center"
       />
       <img
         src={img3}
         alt=""
-        className="absolute inset-0 object-cover object-bottom"
-      />
-      <img
-        src={img4}
-        alt=""
-        className="absolute inset-0 object-cover object-bottom"
-      />
-      <img
-        src={img5}
-        alt=""
-        className="absolute inset-0 object-cover object-bottom"
+        className="absolute w-full h-full inset-0 object-cover object-center"
       />
       <img
         src={img6}
         alt=""
-        className="absolute inset-0 object-cover object-bottom"
+        className="absolute w-full h-full inset-0 object-cover object-center "
+      />
+      <img
+        src={img4}
+        alt=""
+        className="absolute w-full h-full inset-0 object-cover object-bottom "
+      />
+      <img
+        src={img5}
+        alt=""
+        className="absolute w-full h-full inset-0 object-cover object-center"
       />
     </div>
   );
