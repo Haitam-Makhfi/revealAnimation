@@ -2,6 +2,7 @@ import { useState } from "react";
 import Revealer from "./components/Revealer";
 import Imgs from "./components/Imgs.tsx";
 import Nav from "./components/Nav";
+import Grid from "./components/Grid.tsx";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 // import cover1 from "./assets/imgs/coverImg.jpg";
@@ -22,8 +23,9 @@ function App() {
   return (
     <>
       <Revealer sequenceAnimation={sequenceAnimation} />
+      {/* <Imgs sequenceAnimation={sequenceAnimation} /> */}
       <Nav />
-      <Imgs sequenceAnimation={sequenceAnimation} />
+      <Grid />
     </>
   );
 }

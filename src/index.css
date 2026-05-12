@@ -21,7 +21,17 @@ body {
     url("./assets/fonts/pp-neue-montreal-cufonfonts-webfont/ppneuemontreal-bold.woff")
       format("woff");
 }
+@font-face {
+  font-family: "CinzelDecorative-bold";
+  font-style: normal;
+  font-weight: bold;
+  src:
+    local("CinzelDecorative-bold"),
+    url("./assets/fonts/Cinzel_Decorative/CinzelDecorative-Bold.ttf")
+      format("truetype");
+}
 @theme {
   --font-montreal-medium: "PP Neue Montreal Medium", sans-serif;
   --font-montreal-bold: "PP Neue Montreal Bold", sans-serif;
+  --font-cinzel-decorative: "CinzelDecorative-bold", sans-serif;
 }
