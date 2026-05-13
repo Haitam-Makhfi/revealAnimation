@@ -34,7 +34,7 @@ export default function Imgs({ sequenceAnimation }: imgsProps) {
         "#imgs img:first-child",
         {
           scale: 1,
-          duration: 1,
+          duration: 0.8,
           ease: "power4.inOut",
         },
         "revealDone-=0.30",
@@ -44,11 +44,11 @@ export default function Imgs({ sequenceAnimation }: imgsProps) {
         {
           scale: 1,
           opacity: 1,
-          duration: 1,
+          duration: 0.8,
           ease: "power4.inOut",
-          stagger: 0.8,
+          stagger: 0.6,
           onComplete: () => {
-            console.log("cleaning up");
+            //delte inused imgs
             imgs = imgs.filter((img) => {
               if (!img.classList.contains("galeryImg")) {
                 img.remove();
@@ -57,10 +57,11 @@ export default function Imgs({ sequenceAnimation }: imgsProps) {
             });
           },
         },
-        "<=+0.8",
+        "<=+0.6",
       )
       .addLabel("galeryReveal")
       .add(() => {
+        //flipping the imgs to the galery section
         const state = Flip.getState(imgs);
         imgs.forEach((img) => {
           document.querySelector("#galery")?.appendChild(img);
@@ -69,7 +70,6 @@ export default function Imgs({ sequenceAnimation }: imgsProps) {
         });
         return Flip.from(state, {
           ease: "power4.inOut",
-          // scale: true,
           duration: 0.8,
           stagger: 0.2,
           absolute: true,
