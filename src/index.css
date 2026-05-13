@@ -3,6 +3,18 @@ body {
   font-family: var(--font-montreal-medium);
   background-color: var(--color-olive-200);
 }
+.display {
+  position: static;
+  width: 12rem;
+  height: 7rem;
+}
+.active {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  /* padding-inline: 1rem; */
+  gap: 5px;
+}
 @font-face {
   font-family: "PP Neue Montreal Medium";
   font-style: normal;
@@ -30,8 +42,18 @@ body {
     url("./assets/fonts/Cinzel_Decorative/CinzelDecorative-Bold.ttf")
       format("truetype");
 }
+@font-face {
+  font-family: "Science-Gothic-regular";
+  font-style: normal;
+  font-weight: bold;
+  src:
+    local("Science-Gothic-regular"),
+    url("./assets/fonts/Science_Gothic/static/ScienceGothic-regular.ttf")
+      format("truetype");
+}
 @theme {
   --font-montreal-medium: "PP Neue Montreal Medium", sans-serif;
   --font-montreal-bold: "PP Neue Montreal Bold", sans-serif;
   --font-cinzel-decorative: "CinzelDecorative-bold", sans-serif;
+  --font-science-gothic-regular: "Science-Gothic-regular", sans-serif;
 }

@@ -5,6 +5,7 @@ import img4 from "../assets/imgs/img4.jpg";
 import img5 from "../assets/imgs/img5.png";
 import img6 from "../assets/imgs/img6.jpg";
 import { useGSAP } from "@gsap/react";
+import Flip from "gsap/Flip";
 // import { gsap } from "gsap";
 interface imgsProps {
   sequenceAnimation: gsap.core.Timeline | null;
@@ -13,7 +14,7 @@ export default function Imgs({ sequenceAnimation }: imgsProps) {
   useGSAP(() => {
     console.log("imgs running, timeline exists?", !!sequenceAnimation);
     if (!sequenceAnimation) return;
-    const imgs = document.querySelectorAll("#imgs img");
+    let imgs = Array.from(document.querySelectorAll("#imgs img"));
     sequenceAnimation
       .set(
         imgs,
@@ -46,9 +47,35 @@ export default function Imgs({ sequenceAnimation }: imgsProps) {
           duration: 1,
           ease: "power4.inOut",
           stagger: 0.8,
+          onComplete: () => {
+            console.log("cleaning up");
+            imgs = imgs.filter((img) => {
+              if (!img.classList.contains("galeryImg")) {
+                img.remove();
+              }
+              return img.classList.contains("galeryImg");
+            });
+          },
         },
         "<=+0.8",
-      );
+      )
+      .addLabel("galeryReveal")
+      .add(() => {
+        const state = Flip.getState(imgs);
+        imgs.forEach((img) => {
+          document.querySelector("#galery")?.appendChild(img);
+          img.classList.add("display");
+          document.querySelector("#galery")?.classList.add("active");
+        });
+        return Flip.from(state, {
+          ease: "power4.inOut",
+          // scale: true,
+          duration: 0.8,
+          stagger: 0.2,
+          absolute: true,
+          reversed: true,
+        });
+      }, "galeryReveal");
   }, [sequenceAnimation]);
   return (
     <div
@@ -73,17 +100,17 @@ export default function Imgs({ sequenceAnimation }: imgsProps) {
       <img
         src={img6}
         alt=""
-        className="absolute w-full h-full inset-0 object-cover object-center "
+        className="galeryImg absolute w-full h-full inset-0 object-cover object-center "
       />
       <img
         src={img4}
         alt=""
-        className="absolute w-full h-full inset-0 object-cover object-bottom "
+        className="galeryImg absolute w-full h-full inset-0 object-cover object-bottom "
       />
       <img
         src={img5}
         alt=""
-        className="absolute w-full h-full inset-0 object-cover object-center"
+        className="galeryImg absolute w-full h-full inset-0 object-cover object-center"
       />
     </div>
   );

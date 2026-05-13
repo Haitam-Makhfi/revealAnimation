@@ -5,6 +5,8 @@ import Nav from "./components/Nav";
 import Grid from "./components/Grid.tsx";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
+import { Flip } from "gsap/Flip";
+gsap.registerPlugin(Flip);
 // import cover1 from "./assets/imgs/coverImg.jpg";
 // import cover2 from "./assets/imgs/coverImg2.jpg";
 
@@ -14,7 +16,6 @@ function App() {
   useGSAP(() => {
     console.log("Parent creating timeline");
     setSequenceAnimation(gsap.timeline({ force3D: true }));
-    // setSequenceAnimation(true);
     return () => {
       console.log("Parent killing timeline", !!sequenceAnimation);
       sequenceAnimation?.kill();
@@ -23,7 +24,7 @@ function App() {
   return (
     <>
       <Revealer sequenceAnimation={sequenceAnimation} />
-      {/* <Imgs sequenceAnimation={sequenceAnimation} /> */}
+      <Imgs sequenceAnimation={sequenceAnimation} />
       <Nav />
       <Grid />
     </>
