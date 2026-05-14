@@ -6,7 +6,8 @@ import Grid from "./components/Grid.tsx";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
-gsap.registerPlugin(Flip);
+import { SplitText } from "gsap/SplitText";
+gsap.registerPlugin(Flip, SplitText);
 // import cover1 from "./assets/imgs/coverImg.jpg";
 // import cover2 from "./assets/imgs/coverImg2.jpg";
 
@@ -26,7 +27,7 @@ function App() {
       <Revealer sequenceAnimation={sequenceAnimation} />
       <Imgs sequenceAnimation={sequenceAnimation} />
       <Nav />
-      <Grid />
+      <Grid sequenceAnimation={sequenceAnimation} />
     </>
   );
 }

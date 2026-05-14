@@ -71,11 +71,12 @@ export default function Imgs({ sequenceAnimation }: imgsProps) {
         return Flip.from(state, {
           ease: "power4.inOut",
           duration: 0.8,
-          stagger: 0.2,
+          stagger: 0.1,
           absolute: true,
           reversed: true,
         });
-      }, "galeryReveal");
+      }, "galeryReveal")
+      .addLabel("flipDone");
   }, [sequenceAnimation]);
   return (
     <div
