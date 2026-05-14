@@ -31,7 +31,7 @@ export default function Grid({ sequenceAnimation }: gridProps) {
           ease: "power4.inOut",
           stagger: 0.1,
         },
-        "flipDone+=0.5",
+        "flipDone+=0.8",
       )
       .fromTo(
         splitH2.lines,
@@ -44,7 +44,7 @@ export default function Grid({ sequenceAnimation }: gridProps) {
           ease: "power4.inOut",
           stagger: 0.1,
         },
-        "flipDone+=0.5",
+        "<",
       )
       .fromTo(
         splitAdress.lines,
@@ -57,7 +57,7 @@ export default function Grid({ sequenceAnimation }: gridProps) {
           ease: "power4.inOut",
           stagger: 0.1,
         },
-        "flipDone+=0.5",
+        "<",
       )
       .fromTo(
         "#socials .social-lines",
@@ -70,7 +70,16 @@ export default function Grid({ sequenceAnimation }: gridProps) {
           ease: "power4.inOut",
           stagger: 0.1,
         },
-        "flipDone+=0.5",
+        "<",
+      )
+      .to(
+        "#coverImg",
+        {
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          duration: 0.8,
+          ease: "power4.inOut",
+        },
+        "<",
       );
   }, [sequenceAnimation]);
   return (
@@ -120,6 +129,7 @@ export default function Grid({ sequenceAnimation }: gridProps) {
       <img
         src={coverImg2}
         className="w-full h-full row-span-2 object-cover object-center"
+        style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }}
         alt="Cover Image"
         id="coverImg"
       />

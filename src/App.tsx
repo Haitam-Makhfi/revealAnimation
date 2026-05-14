@@ -26,7 +26,7 @@ function App() {
     <>
       <Revealer sequenceAnimation={sequenceAnimation} />
       <Imgs sequenceAnimation={sequenceAnimation} />
-      <Nav />
+      <Nav sequenceAnimation={sequenceAnimation} />
       <Grid sequenceAnimation={sequenceAnimation} />
     </>
   );
