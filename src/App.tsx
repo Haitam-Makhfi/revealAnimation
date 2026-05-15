@@ -7,6 +7,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
 import { SplitText } from "gsap/SplitText";
+import { Suspense } from "react";
 gsap.registerPlugin(Flip, SplitText);
 // import cover1 from "./assets/imgs/coverImg.jpg";
 // import cover2 from "./assets/imgs/coverImg2.jpg";
@@ -23,12 +24,11 @@ function App() {
     };
   }, []);
   return (
-    <>
-      <Revealer sequenceAnimation={sequenceAnimation} />
+    <Suspense fallback={<Revealer sequenceAnimation={sequenceAnimation} />}>
       <Imgs sequenceAnimation={sequenceAnimation} />
       <Nav sequenceAnimation={sequenceAnimation} />
       <Grid sequenceAnimation={sequenceAnimation} />
-    </>
+    </Suspense>
   );
 }
 
