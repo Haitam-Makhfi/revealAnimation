@@ -16,6 +16,7 @@ export default function Imgs({ sequenceAnimation }: imgsProps) {
     if (!sequenceAnimation) return;
     let imgs = Array.from(document.querySelectorAll("#imgs img"));
     sequenceAnimation
+      .addLabel("revealDone")
       .set(
         imgs,
         {
@@ -37,7 +38,7 @@ export default function Imgs({ sequenceAnimation }: imgsProps) {
           duration: 0.8,
           ease: "power4.inOut",
         },
-        "revealDone-=0.30",
+        "revealDone+=1",
       )
       .to(
         "#imgs img:not(:first-child)",
